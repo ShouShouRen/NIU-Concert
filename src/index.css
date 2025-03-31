@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+.gradient {
+  background: linear-gradient(180deg, #abf50c 0%, #7c6394 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);
+}
+/* 
+@layer components {
+  .card {
+    @apply flex flex-col justify-center items-center p-4 rounded-2xl 
+           bg-[#1e1e2e] shadow-2xl min-w-[360px] lg:min-h-[260px] min-h-[200px] 
+           border border-[#7e22ce] transition-transform duration-300 hover:scale-105;
+  }
+} */
+
+body {
+  background-color: #0a0a12;
+  color: white;
+}
+.rfm-marquee-container:first-child {
+  height: none;
+}
+.rfm-marquee-container {
+  height: 280px;
+}
+/* rgb(230,113,113)
+rgb(237,180,180)
+rgb(217,205,205)
+rgb(120,88,88) */

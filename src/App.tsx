@@ -62,18 +62,18 @@ const App = () => {
                       className="group transform transition-all duration-300 hover:scale-105"
                     >
                       <div
-                        className="card overflow-hidden 
+                        className="overflow-hidden 
                         bg-white 
                         border-2 border-red-600/50 
                         rounded-lg shadow-md 
                         hover:shadow-red-600/30 
                         transition-all duration-300 
-                        min-w-[300px] min-h-[200px] 
+                        md:min-w-[300px] min-w-[180px] md:min-h-[200px] h-full
                         flex flex-col justify-center items-center 
                         p-4 space-y-4"
                       >
                         <img
-                          className="object-contain w-full max-h-[120px] z-10 rounded-lg transition-transform group-hover:scale-105"
+                          className="object-contain md:w-[120px] w-[60px] max-h-[120px] z-10 rounded-lg transition-transform group-hover:scale-105"
                           src={sponsor.logo}
                           alt={sponsor.name}
                         />

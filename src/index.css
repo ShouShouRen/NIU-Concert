@@ -1,4 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap");
 @import "tailwindcss";
+
+body {
+  background: url("https://www.transparenttextures.com/patterns/old-mathematics.png"),
+    #f5ecd7;
+  color: #4b2e19;
+  font-family: "Noto Serif TC", "serif";
+}
 
 .gradient {
   background: linear-gradient(180deg, #abf50c 0%, #7c6394 100%);
@@ -10,25 +18,32 @@
 
 @layer components {
   .card {
-    @apply overflow-hidden 
-    bg-white 
-    border-2 border-red-600/50 
-    rounded-lg shadow-md 
-    hover:shadow-red-600/30 
-    transition-all duration-300 
-    md:min-w-[300px] min-w-[180px] md:min-h-[200px] h-full
-    flex flex-col justify-center items-center 
-    p-4 space-y-4;
+    @apply overflow-hidden bg-[#f9f5e3] border-2 border-red-700 rounded-xl shadow-lg hover:shadow-red-700/30 transition-all duration-300 md:min-w-[300px] min-w-[180px] md:min-h-[200px] h-full flex flex-col justify-center items-center p-4 space-y-4;
+    box-shadow: 0 4px 16px 0 rgba(120, 88, 88, 0.15), 0 1.5px 0 0 #bfa16b inset;
+    border-style: double;
   }
   .sponsor-title {
-    @apply text-center font-bold p-8 text-4xl text-red-600  border-b-4 border-yellow-600 mx-auto w-max mb-10;
+    @apply text-center font-bold p-8 text-4xl text-red-700 border-b-4 border-yellow-700 mx-auto w-max mb-10 tracking-widest;
+    font-family: "Noto Serif TC", serif;
+    letter-spacing: 0.15em;
+    text-shadow: 2px 2px 0 #fffbe6, 0 0 8px #e67171;
+  }
+  .vintage-banner {
+    @apply bg-[#f5ecd7] border-2 border-red-700 rounded-lg px-6 py-2 shadow-md inline-block;
+    font-family: "Noto Serif TC", serif;
+    font-weight: 900;
+    color: #b91c1c;
+    font-size: 2.5rem;
+    letter-spacing: 0.2em;
+    text-shadow: 2px 2px 0 #fffbe6, 0 0 8px #e67171;
+  }
+  .vintage-info {
+    @apply bg-[#f9f5e3] border border-yellow-700 rounded px-4 py-2 my-2 inline-block text-lg font-semibold text-[#b91c1c];
+    font-family: "Noto Serif TC", serif;
+    letter-spacing: 0.1em;
   }
 }
 
-body {
-  background-color: #0a0a12;
-  color: white;
-}
 .rfm-marquee-container:first-child {
   height: none;
 }
@@ -39,3 +54,12 @@ body {
 rgb(237,180,180)
 rgb(217,205,205)
 rgb(120,88,88) */
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #e7d9b7;
+}
+::-webkit-scrollbar-thumb {
+  background: #bfa16b;
+  border-radius: 4px;
+}

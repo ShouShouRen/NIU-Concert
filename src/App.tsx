@@ -35,9 +35,7 @@ const App = () => {
         <p className="text-yellow-600 text-center font-semibold text-lg mb-8">
           特別感謝這些贊助商，讓我們能夠更順利的舉辦活動，再次感謝贊助商們對我們的支持🙏
         </p>
-        <h2 className="text-center font-bold p-8 text-4xl text-red-600  border-b-4 border-yellow-600 mx-auto w-max mb-10">
-          贊助廠商名單
-        </h2>
+        <h2 className="sponsor-title">贊助廠商名單</h2>
 
         {[{ direction: "left" as const }, { direction: "right" as const }].map(
           (marqueeProps, index) => (
@@ -61,17 +59,7 @@ const App = () => {
                       rel="noopener noreferrer"
                       className="group transform transition-all duration-300 hover:scale-105"
                     >
-                      <div
-                        className="overflow-hidden 
-                        bg-white 
-                        border-2 border-red-600/50 
-                        rounded-lg shadow-md 
-                        hover:shadow-red-600/30 
-                        transition-all duration-300 
-                        md:min-w-[300px] min-w-[180px] md:min-h-[200px] h-full
-                        flex flex-col justify-center items-center 
-                        p-4 space-y-4"
-                      >
+                      <div className="card">
                         <img
                           className="object-contain md:w-[120px] w-[60px] max-h-[120px] z-10 rounded-lg transition-transform group-hover:scale-105"
                           src={sponsor.logo}

@@ -7,14 +7,23 @@
   -webkit-text-fill-color: transparent;
   text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);
 }
-/* 
+
 @layer components {
   .card {
-    @apply flex flex-col justify-center items-center p-4 rounded-2xl 
-           bg-[#1e1e2e] shadow-2xl min-w-[360px] lg:min-h-[260px] min-h-[200px] 
-           border border-[#7e22ce] transition-transform duration-300 hover:scale-105;
+    @apply overflow-hidden 
+    bg-white 
+    border-2 border-red-600/50 
+    rounded-lg shadow-md 
+    hover:shadow-red-600/30 
+    transition-all duration-300 
+    md:min-w-[300px] min-w-[180px] md:min-h-[200px] h-full
+    flex flex-col justify-center items-center 
+    p-4 space-y-4;
   }
-} */
+  .sponsor-title {
+    @apply text-center font-bold p-8 text-4xl text-red-600  border-b-4 border-yellow-600 mx-auto w-max mb-10;
+  }
+}
 
 body {
   background-color: #0a0a12;

@@ -1,11 +1,15 @@
-import Marquee from "react-fast-marquee";
-import sponsors from "./data/data";
+// import Marquee from "react-fast-marquee";
+// import sponsors from "./data/data";
+import { sponsors } from "./data/sponsors";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import Sponsor3DWall from "./Sponsor3DWall";
 
 const App = () => {
   const data = sponsors;
-  const cardContainerRef = useRef<HTMLDivElement>(null);
+  const goldSponsors = data.filter((s) => s.level === "gold");
+  const silverSponsors = data.filter((s) => s.level === "silver");
+  const bronzeSponsors = data.filter((s) => s.level === "bronze");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,26 +46,6 @@ const App = () => {
   const thanksVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.5 } },
-  };
-  const marqueeVariants = {
-    hidden: { opacity: 0, x: 60 },
-    visible: (i: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, delay: 2 + i * 0.3 },
-    }),
-  };
-  const cardListVariants = {
-    visible: { transition: { staggerChildren: 0.12, delayChildren: 2.6 } },
-  };
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { type: "tween", duration: 0.7 },
-    },
   };
   const footerVariants = {
     visible: { transition: { staggerChildren: 0.2, delayChildren: 3.5 } },
@@ -163,98 +147,183 @@ const App = () => {
             >
               特別感謝這些贊助商，讓我們能夠更順利的舉辦活動，再次感謝贊助商們對我們的支持🙏
             </motion.p>
-            <h2 className="sponsor-title">贊助廠商名單</h2>
-            <motion.div
-              ref={cardContainerRef}
-              variants={cardListVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              {[
-                { direction: "left" as const },
-                { direction: "right" as const },
-              ].map((marqueeProps, index) => (
-                <motion.div
-                  key={index}
-                  custom={index}
-                  variants={marqueeVariants}
-                  initial="hidden"
-                  animate="visible"
+            <h2 className="sponsor-title">金牌贊助商</h2>
+            <div className="relative w-full h-[350px] md:h-[500px] mb-2">
+              <Sponsor3DWall sponsors={goldSponsors} />
+            </div>
+            <div className="flex flex-col items-center mb-10">
+              <div className="flex items-center gap-2 animate-drag-hint mb-2 select-none">
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 28 28"
+                  fill="none"
+                  className="opacity-70"
                 >
-                  <Marquee
-                    speed={50}
-                    pauseOnHover={true}
-                    gradient={false}
-                    pauseOnClick={true}
-                    direction={marqueeProps.direction}
-                    className={`my-6 ${index % 2 === 1 ? "mb-16" : ""}`}
+                  <path
+                    d="M18 14H6M6 14l5-5M6 14l5 5"
+                    stroke="#b91c1c"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span
+                  className="text-[#b91c1c] font-bold text-base tracking-wide"
+                  style={{ fontFamily: "Noto Serif TC, serif" }}
+                >
+                  拖曳旋轉3D牆
+                </span>
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 28 28"
+                  fill="none"
+                  className="opacity-70"
+                >
+                  <path
+                    d="M10 14h12M22 14l-5-5M22 14l-5 5"
+                    stroke="#b91c1c"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            <h2 className="sponsor-title">銀牌贊助商</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 place-items-center">
+              {silverSponsors.map((sponsor, idx) => (
+                <a
+                  key={idx}
+                  href={sponsor.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center group hover:scale-105 transition-transform"
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className={`object-contain w-32 h-20 md:w-40 md:h-28 rounded-lg border border-yellow-700 bg-white shadow mb-2 animate-bounce-cute animate-delay-${
+                      idx % 6
+                    }`}
+                    onError={(e) => (e.currentTarget.src = "/no-image.png")}
+                  />
+                  <span
+                    className="font-bold text-lg text-[#b91c1c] tracking-widest mt-1 text-center"
+                    style={{ fontFamily: "Noto Serif TC, serif" }}
                   >
-                    <div className="flex gap-8 px-4">
-                      {[...Array(8)].map((_, cardIndex) => {
-                        const sponsor = data[cardIndex % data.length];
-                        return (
-                          <motion.a
-                            href={sponsor.link}
-                            key={cardIndex}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group transform transition-all duration-300 hover:scale-105"
-                            variants={cardVariants}
-                            whileHover={{
-                              scale: 1.08,
-                              boxShadow: "0 8px 32px 0 rgba(185,28,28,0.18)",
-                            }}
-                            whileTap={{ scale: 0.96 }}
-                          >
-                            <div className="card relative">
-                              <span
-                                className="absolute top-2 right-2 text-xs text-[#b91c1c] opacity-60 rotate-[-15deg] select-none"
-                                style={{ fontFamily: "serif" }}
-                              >
-                                看更多
-                              </span>
-                              <img
-                                className="object-contain md:w-[120px] w-[60px] max-h-[120px] z-10 rounded-lg transition-transform group-hover:scale-105 border border-[#bfa16b] bg-[#fffbe6]"
-                                src={sponsor.logo}
-                                alt={sponsor.name}
-                              />
-                              <h3
-                                className="text-center font-bold leading-[1.5] p-2 text-[#b91c1c] z-10 text-xl tracking-widest mt-2"
-                                style={{
-                                  fontFamily: "Noto Serif TC, serif",
-                                  textShadow:
-                                    "2px 2px 0 #fffbe6, 0 0 8px #e67171",
-                                }}
-                              >
-                                {sponsor.name}
-                              </h3>
-                            </div>
-                          </motion.a>
-                        );
-                      })}
-                    </div>
-                  </Marquee>
-                </motion.div>
+                    {sponsor.name}
+                  </span>
+                </a>
               ))}
-            </motion.div>
+            </div>
+            <h2 className="sponsor-title">銅牌贊助商</h2>
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-12 place-items-center">
+              {bronzeSponsors.map((sponsor, idx) => (
+                <a
+                  key={idx}
+                  href={sponsor.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center group hover:scale-105 transition-transform"
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className={`object-contain w-20 h-12 md:w-28 md:h-16 rounded border border-yellow-700 bg-white shadow mb-1 animate-bounce-cute animate-delay-${
+                      idx % 6
+                    }`}
+                    onError={(e) => (e.currentTarget.src = "/no-image.png")}
+                  />
+                  <span
+                    className="font-bold text-xs text-[#b91c1c] tracking-widest text-center"
+                    style={{ fontFamily: "Noto Serif TC, serif" }}
+                  >
+                    {sponsor.name}
+                  </span>
+                </a>
+              ))}
+            </div>
             <motion.div
-              className="mt-16 mb-4 flex flex-col items-center"
+              className="mt-16 mb-4 flex flex-col md:flex-row items-stretch justify-center gap-4"
               variants={footerVariants}
               initial="hidden"
               animate="visible"
             >
-              <motion.span
-                className="vintage-info text-base"
+              <motion.div
+                className="vintage-info text-base mb-2 md:mb-0 min-h-[100px] flex-1 flex flex-col items-center justify-center text-center gap-1 px-4 py-3"
                 variants={footerItemVariants}
               >
-                主辦單位：國立宜蘭大學學生會
-              </motion.span>
-              <motion.span
-                className="vintage-info text-base mt-1"
+                <div className="font-extrabold text-lg mb-1 flex items-center gap-2">
+                  <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#FFD700" />
+                    <text
+                      x="12"
+                      y="17"
+                      textAnchor="middle"
+                      fontSize="14"
+                      fill="#22577A"
+                      fontWeight="bold"
+                    >
+                      主
+                    </text>
+                  </svg>
+                  活動主辦單位
+                </div>
+                <div className="border-t border-yellow-400 w-8 mb-1"></div>
+                <div className="leading-relaxed">
+                  國立宜蘭大學 第十四屆 學生會
+                </div>
+                <div className="leading-relaxed">國立宜蘭大學 畢聯會</div>
+              </motion.div>
+              <motion.div
+                className="vintage-info text-base mb-2 md:mb-0 min-h-[100px] flex-1 flex flex-col items-center justify-center text-center gap-1 px-4 py-3"
                 variants={footerItemVariants}
               >
-                協辦單位：其他合作廠商與技術支援公司
-              </motion.span>
+                <div className="font-extrabold text-lg mb-1 flex items-center gap-2">
+                  <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#38B6A8" />
+                    <text
+                      x="12"
+                      y="17"
+                      textAnchor="middle"
+                      fontSize="14"
+                      fill="#fff"
+                      fontWeight="bold"
+                    >
+                      執
+                    </text>
+                  </svg>
+                  活動執行單位
+                </div>
+                <div className="border-t border-teal-400 w-8 mb-1"></div>
+                <div className="leading-relaxed">伯熱音悅娛樂有限公司</div>
+              </motion.div>
+              <motion.div
+                className="vintage-info text-base min-h-[100px] flex-1 flex flex-col items-center justify-center text-center gap-1 px-4 py-3"
+                variants={footerItemVariants}
+              >
+                <div className="font-extrabold text-lg mb-1 flex items-center gap-2">
+                  <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#B87333" />
+                    <text
+                      x="12"
+                      y="17"
+                      textAnchor="middle"
+                      fontSize="14"
+                      fill="#fff"
+                      fontWeight="bold"
+                    >
+                      感
+                    </text>
+                  </svg>
+                  特別感謝
+                </div>
+                <div className="border-t border-orange-400 w-8 mb-1"></div>
+                <div className="leading-relaxed">宜蘭大學校友會</div>
+                <div className="leading-relaxed">酷可創念</div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

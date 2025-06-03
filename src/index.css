@@ -54,7 +54,6 @@ body {
 rgb(237,180,180)
 rgb(217,205,205)
 rgb(120,88,88) */
-
 ::-webkit-scrollbar {
   width: 8px;
   background: #e7d9b7;
@@ -62,4 +61,44 @@ rgb(120,88,88) */
 ::-webkit-scrollbar-thumb {
   background: #bfa16b;
   border-radius: 4px;
+}
+@keyframes bounce-cute {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-10px) scale(1.08);
+  }
+  40% {
+    transform: translateY(0) scale(1);
+  }
+  60% {
+    transform: translateY(-6px) scale(1.04);
+  }
+  80% {
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-bounce-cute {
+  animation: bounce-cute 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+// 隨機延遲
+.animate-delay-0 {
+  animation-delay: 0s;
+}
+.animate-delay-1 {
+  animation-delay: 0.3s;
+}
+.animate-delay-2 {
+  animation-delay: 0.6s;
+}
+.animate-delay-3 {
+  animation-delay: 0.9s;
+}
+.animate-delay-4 {
+  animation-delay: 1.2s;
+}
+.animate-delay-5 {
+  animation-delay: 1.5s;
 }

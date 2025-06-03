@@ -152,7 +152,7 @@ const App = () => {
               <Sponsor3DWall sponsors={goldSponsors} />
             </div>
             <div className="flex flex-col items-center mb-10">
-              <div className="flex items-center gap-2 animate-drag-hint mb-2 select-none">
+              <div className="flex items-center gap-2 animate-drag-hint animate-swing-hint mb-2 select-none">
                 <svg
                   width="28"
                   height="28"

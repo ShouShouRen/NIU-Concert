@@ -102,3 +102,29 @@ rgb(120,88,88) */
 .animate-delay-5 {
   animation-delay: 1.5s;
 }
+@keyframes swing-hint {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-18px);
+  }
+  30% {
+    transform: translateX(14px);
+  }
+  45% {
+    transform: translateX(-10px);
+  }
+  60% {
+    transform: translateX(7px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.animate-swing-hint {
+  animation: swing-hint 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}

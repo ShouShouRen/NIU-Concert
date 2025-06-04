@@ -49,7 +49,7 @@ export const sponsors = [
   },
   {
     level: "silver",
-    name: "道格拉斯",
+    name: "蘇格蘭王威士忌",
     link: "https://www.609.com.tw/ProductList/%E9%81%93%E6%A0%BC%E6%8B%89%E6%96%AF%E8%98%AD%E6%81%A9",
     logo: "/logo/douglas-logo.png",
   },

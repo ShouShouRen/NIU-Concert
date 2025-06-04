@@ -56,7 +56,7 @@ export const sponsors = [
   // 銅牌贊助商
   {
     level: "bronze",
-    name: "明星三缺一",
+    name: "明星3缺1",
     link: "https://www.gametower.com.tw/Games/FreePlay/Mj/star31/",
     logo: "/logo/star31-logo.png",
   },

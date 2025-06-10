@@ -32,6 +32,12 @@ export const sponsors = [
     link: "https://cokedesign.com.tw/",
     logo: "https://s.web66.com.tw/_file/113907/piclist/pic1.jpg",
   },
+  {
+    level: "gold",
+    name: "民眾黨青年部",
+    link: "https://www.instagram.com/tppyouth",
+    logo: "/logo/youth.png",
+  },
   // 銀牌贊助商
   {
     level: "silver",

@@ -1,8 +1,9 @@
 // import Marquee from "react-fast-marquee";
 // import sponsors from "./data/data";
+import { Analytics } from "@vercel/analytics/react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { sponsors } from "./data/sponsors";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
 import Sponsor3DWall from "./Sponsor3DWall";
 
 const App = () => {
@@ -328,6 +329,7 @@ const App = () => {
           </div>
         </div>
       )}
+      <Analytics />
     </div>
   );
 };
